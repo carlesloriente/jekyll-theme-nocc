@@ -3,7 +3,7 @@ name: Publish Gem
 on:
   push:
     branches:
-      - main
+      - "!*"
     tags:
       - v*
 
@@ -13,14 +13,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-
-      - name: Configure git user
-        env:
-          OWNER_EMAIL: ${{ secrets.OWNER_EMAIL }}
-          OWNER_NAME: ${{ secrets.OWNER_NAME }}
-        run: |
-          git config --global user.email "$OWNER_EMAIL"
-          git config --global user.name "$OWNER_NAME"
       - name: Release Gem
         if: contains(github.ref, 'refs/tags/v')
         uses: cadwallion/publish-rubygems-action@master
@@ -28,3 +20,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT }}
           RUBYGEMS_API_KEY: ${{ secrets.RG_GHACTION_API_KEY }}
           RELEASE_COMMAND: rake release
+          OWNER_EMAIL: ${{ secrets.OWNER_EMAIL }}
+          OWNER_NAME: ${{ secrets.OWNER_NAME }}
+          run: |
+            git config --global user.email "$OWNER_EMAIL"
+            git config --global user.name "$OWNER_NAME"
