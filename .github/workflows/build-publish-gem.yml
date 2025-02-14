@@ -3,17 +3,24 @@ name: Publish Gem
 on:
   push:
     branches:
-      - "!*"
+      - main
     tags:
       - v*
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
 
     steps:
       - uses: actions/checkout@v1
 
+      - name: Configure git user
+        env:
+          OWNER_EMAIL: ${{ secrets.OWNER_EMAIL }}
+          OWNER_NAME: ${{ secrets.OWNER_NAME }}
+        run: |
+          git config --global user.email "$OWNER_EMAIL"
+          git config --global user.name "$OWNER_NAME"
       - name: Release Gem
         if: contains(github.ref, 'refs/tags/v')
         uses: cadwallion/publish-rubygems-action@master
