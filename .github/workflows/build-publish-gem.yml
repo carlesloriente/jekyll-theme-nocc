@@ -20,8 +20,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT }}
           RUBYGEMS_API_KEY: ${{ secrets.RG_GHACTION_API_KEY }}
           RELEASE_COMMAND: rake release
-          OWNER_EMAIL: ${{ secrets.OWNER_EMAIL }}
-          OWNER_NAME: ${{ secrets.OWNER_NAME }}
-          run: |
-            git config --global user.email "$OWNER_EMAIL"
-            git config --global user.name "$OWNER_NAME"
