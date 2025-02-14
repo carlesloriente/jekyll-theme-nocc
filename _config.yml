@@ -99,4 +99,4 @@ sass:
     - ./_sass
   style                 : compressed
 
-exclude: ["AUTHORS.md", "CODE_OF_CONDUCT.md", "CONTRIBUTING.md", "CODEOWNERS", "LICENSE", "package.json", "package-lock.json", "README.md", "SECURITY.md", "WORKFLOW.md", "node_modules", "Gemfile", "Gemfile.lock", "vendor/bundle/", "vendor/cache/", "vendor/gems/", "vendor/ruby/"]
+exclude: ["AUTHORS.md", "CODE_OF_CONDUCT.md", "CONTRIBUTING.md", "CODEOWNERS", "LICENSE", "README.md", "SECURITY.md", "WORKFLOW.md", "Gemfile", "Gemfile.lock", "vendor/bundle/", "vendor/cache/", "vendor/gems/", "vendor/ruby/"]
