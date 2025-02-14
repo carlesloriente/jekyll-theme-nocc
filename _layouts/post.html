@@ -1,0 +1,62 @@
+---
+layout: default
+---
+
+<main class="flex-shrink-0">
+{% if page.background %}
+<section class="masthead sechead" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.5)0%,rgba(0,0,0,0.5) 100%), url('{{ page.background }}')">
+{% else %}
+<section class="masthead sechead">
+{% endif %}
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto">
+        <div class="post-heading">
+          <h1>{{ page.title }}</h1>
+          {%- if page.description %}
+          <h2 class="subheading">{{ page.description }}</h2>
+          {% endif -%}
+          <span class="meta">Posted by
+            {% if page.author %} <a href="{{ 'about/' | relative_url }}" hreflang="{{ site.lang }}" aria-label="Author">{{ page.author }} </a> {% else %}<a href="{{ 'posts/' | relative_url }}" hreflang="{{ site.lang }}" aria-label="Author">{{ site.author }} </a> {% endif %} 
+            on {{ page.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=page.content -%}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {{ content }}
+        <hr>
+        {% if site.kofi %}
+        <div class="text-center">
+          <p><mark>Found a snippet that saved your day?</mark> Consider <a href="https://ko-fi.com/{{ site.kofi }}" target="_blank" rel="noopener" title="Support me on ko-fi.com">dropping a tip!</a></p>
+          <script type="text/javascript" src="{{ '/assets/vendor/nocc-bootstrap-theme/js/ko-fi/widget_2.min.js' | relative_url }}"></script>
+          <script type="text/javascript">kofiwidget2.init("Buy me a coffee", "#176391", "{{ site.kofi }}");kofiwidget2.draw();</script>
+        </div>
+        <hr>
+        {% endif %}
+        <div class="clearfix">
+          {% if page.comments %}
+            {% if site.disqus_shortname %}
+              {% include disqus_comments.html %}
+            {% endif %}
+          {% endif %}
+          {% if page.previous.url %}
+          <a class="btn btn-primary float-start" href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" hreflang="{{ site.lang }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ page.previous.title }}">&larr; Previous<span class="d-none d-md-inline">
+              Post</span></a>
+          {% endif %}
+          {% if page.next.url %}
+          <a class="btn btn-primary float-end" href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" hreflang="{{ site.lang }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ page.next.title }}">Next<span class="d-none d-md-inline">
+              Post</span> &rarr;</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+</section>
+</main>
