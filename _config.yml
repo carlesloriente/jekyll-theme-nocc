@@ -25,12 +25,12 @@ color                   : "#FFFFFF"
 # Theme Notice (please don't remove it ;))
 theme_version           : v2.0.0
 theme_name              : NOCC Bootstrap Jekyll Theme
-theme_repo              : https://github.com/carlesloriente/nocc-bootstrap-jekyll-theme/
+theme_repo              : https://github.com/carlesloriente/jekyll-theme-nocc/
 theme_url               : https://bootstrap-theme.notesoncloudcomputing.com/
 theme_author            : Carles Loriente
 theme_author_url        : https://www.notesoncloudcomputing.com/about/
-theme_download          : https://github.com/carlesloriente/nocc-bootstrap-jekyll-theme/archive/refs/heads/main.zip
-theme_package           : https://rubygems.org/gems/nocc-bootstrap-jekyll-theme
+theme_download          : https://github.com/carlesloriente/jekyll-theme-nocc/archive/refs/heads/main.zip
+theme_package           : https://rubygems.org/gems/jekyll-theme-nocc
 theme_logo              : "/assets/vendor/nocc-bootstrap-theme/images/nocc/nocc_logo.webp"
 
 # Social Profiles
