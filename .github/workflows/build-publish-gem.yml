@@ -20,4 +20,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT }}
           RUBYGEMS_API_KEY: ${{ secrets.RG_GHACTION_API_KEY }}
           RELEASE_COMMAND: rake release
-
+      - name: Configure git user
+        run: |
+          git config --global user.email "7197733+carlesloriente@users.noreply.github.com"
+          git config --global user.name "Carles Loriente"
