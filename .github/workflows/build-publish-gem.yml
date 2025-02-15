@@ -8,15 +8,20 @@ on:
       - v*
 
 jobs:
-  build:
+  push:
     runs-on: ubuntu-24.04
-    
+    permissions:
+      contents: write
+      id-token: write
+
     steps:
-      - uses: actions/checkout@v1
-      - name: Release Gem
-        if: contains(github.ref, 'refs/tags/v')
-        uses: cadwallion/publish-rubygems-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
-          RUBYGEMS_API_KEY: ${{ secrets.RG_GHACTION_API_KEY }}
-          RELEASE_COMMAND: rake release
+      # Set up
+      - uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          ruby-version: ruby
+
+      # Release
+      - uses: rubygems/release-gem@v1
