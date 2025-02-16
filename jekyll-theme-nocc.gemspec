@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "jekyll-theme-nocc"
-  spec.version       = "2.0.0"
+  spec.version       = "2.0.1"
   spec.authors       = ["Carles Loriente"]
   spec.email         = ["7197733+carlesloriente@users.noreply.github.com"]
 
@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/carlesloriente/jekyll-theme-nocc/"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_data|_layouts|_includes|_sass|LICENSE|README|_config\.yml)!i) }
+  spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_data|_layouts|_plugins|posts|_includes|_sass|LICENSE|README|_config\.yml|404\.html|503\.html|about\.html|contact\.html|gallery\.html|tags\.html)!i) }
 
   spec.metadata = {
     "bug_tracker_uri"   => "https://github.com/carlesloriente/jekyll-theme-nocc/issues",
