@@ -1,26 +1,44 @@
 landing                 : false
-title                   : NOCC
+title                   : Site title
 author                  : Your Name
-url                     : "https://www.yoururl.com"
+url                     : "https://www.yoursiteurl.com"
 author_url              : "https://www.yoururl.com"
 baseurl                 : "/" 
 timezone                : "Europe/Madrid"
-description             : A responsive dual theme using Bootstrap 5 for Jekyll created by Carles Loriente.
+description             : Short description of your site.
 full_description        : >
- A responsive dual theme using Bootstrap 5 for Jekyll created by Carles Loriente. Featuring a homepage, about page, tags cloud page, gallery of images page, examples post pages, post comments powered by Disqus, and contact page form powered by Formspree.
+ A long description of your site.
 gh_repository           : https://github.com/yourusername/yourrepo/
 encoding                : "utf-8"
 locale                  : "en-US"
 lang                    : "en"
-formemail               : 
+formemail               : "form@email.com"
+email                   : "you@email.com"
 permalink               : pretty
 
 # Manifest
-name                    : "NOCC Boostrap Jekyll Theme"
-short_name              : "NOCC"
+name                    : "Site name"
+short_name              : "NAME"
 language                : "en"
 lang_direction          : "ltr"
 color                   : "#FFFFFF"
+
+# Add your Social Profiles
+twitter_username        :
+github_username         : 
+linkedin_username       : 
+kofi                    : 
+
+# Add your google-analytics ID here to activate google analytics
+google_site_verification: 
+google_analytics        : 
+google_adsense_account  : 
+google_tag_id           : 
+
+# Disqus Comments. Leave shortname blank to disable comments site-wide.
+# Disable comments for any post by adding `comments: false` to that post's YAML Front Matter.
+disqus_shortname        : 
+
 
 # Theme Notice (please don't remove it ;))
 theme_version           : v2.0.0
@@ -33,24 +51,7 @@ theme_download          : https://github.com/carlesloriente/jekyll-theme-nocc/ar
 theme_package           : https://rubygems.org/gems/jekyll-theme-nocc
 theme_logo              : "/assets/vendor/nocc-bootstrap-theme/images/nocc/nocc_logo.webp"
 
-# Social Profiles
-email                   : "you@email.com"
-twitter_username        : 
-github_username         : 
-linkedin_username       : 
-kofi                 : 
-
-# Add your google-analytics ID here to activate google analytics
-google_site_verification: 
-google_analytics        : 
-google_adsense_account  : 
-google_tag_id           : 
-
-# Disqus Comments
-# Leave shortname blank to disable comments site-wide.
-# Disable comments for any post by adding `comments: false` to that post's YAML Front Matter.
-disqus_shortname        : 
-
+# Site settings
 includes_dir            : _includes
 layouts_dir             : _layouts
 plugins_dir             : _plugins
@@ -88,7 +89,7 @@ kramdown:
 
 # Build settings
 paginate                : 20
-paginate_path           : "/notes/page:num/"
+paginate_path           : "/posts/page:num/"
 plugins:
   - jekyll-feed
   - jekyll-paginate
