@@ -17,21 +17,32 @@
             <li class="nav-item">
               <a class="nav-link" hreflang="{{ site.lang }}" href="{{ site.baseurl }}" aria-label="{{ site.title }} Home">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" hreflang="{{ site.lang }}" href="{{ 'about/' | relative_url }}" aria-label="{{ site.title }} About">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" hreflang="{{ site.lang }}" href="{{ 'posts/' | relative_url }}" aria-label="{{ site.title }} Posts">Posts</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" hreflang="{{ site.lang }}" href="{{ site.tags_dir | append: '/' | relative_url }}" aria-label="{{ site.title }} Tags">Tags</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" hreflang="{{ site.lang }}" href="{{ 'gallery/' | relative_url }}" aria-label="{{ site.title }} Gallery of images">Gallery</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" hreflang="{{ site.lang }}" href="{{ 'contact/' | relative_url }}" aria-label="{{ site.title }} Contact form">Contact</a>
-            </li>
+            {% assign pages = site.pages | sort:"nav_order"  %}
+            {%- for page in pages -%}
+            {% case page.path %}
+              {% when 'about.markdown' %}
+              <li class="nav-item">
+                <a class="nav-link" hreflang="{{ site.lang }}" href="{{ 'about/' | relative_url }}" aria-label="{{ site.title }} About">About</a>
+              </li>
+              {% when 'posts/index.html' %}
+              <li class="nav-item">
+                <a class="nav-link" hreflang="{{ site.lang }}" href="{{ 'posts/' | relative_url }}" aria-label="{{ site.title }} Posts">Posts</a>
+              </li>
+              {% when 'tags.markdown' %}
+              <li class="nav-item">
+                <a class="nav-link" hreflang="{{ site.lang }}" href="{{ site.tags_dir | append: '/' | relative_url }}" aria-label="{{ site.title }} Tags">Tags</a>
+              </li>
+              {% when 'gallery.markdown' %}
+              <li class="nav-item">
+                <a class="nav-link" hreflang="{{ site.lang }}" href="{{ 'gallery/' | relative_url }}" aria-label="{{ site.title }} Gallery of images">Gallery</a>
+              </li>
+              {% when 'contact.html' %}
+              <li class="nav-item">
+                <a class="nav-link" hreflang="{{ site.lang }}" href="{{ 'contact/' | relative_url }}" aria-label="{{ site.title }} Contact form">Contact</a>
+              </li>
+              {% else %}
+            {% endcase %}
+            {% endfor %}
             {%- if site.gh_repository %}
             <li class="nav-item">
               <a href="{{ site.gh_repository }}" hreflang="{{ site.lang }}" target="_blank" rel="noreferrer" aria-label="{{ site.title }} repo" title="{{ site.title }} repo"><img class="filter-white" src="/assets/vendor/nocc-bootstrap-theme/icons/1.11.0/github.svg" width="24px" height="24px" aria-hidden="true" /></a>

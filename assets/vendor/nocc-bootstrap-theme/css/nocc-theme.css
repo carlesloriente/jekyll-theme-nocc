@@ -10188,6 +10188,7 @@ section.masthead .page-heading .subheading::first-letter {
 @media only screen and (min-width: 990px) {
   section.masthead .page-heading h1 {
     font-size: 4rem;
+    padding-top: 4rem;
   }
   section.masthead .page-heading .subheading {
     font-size: 2rem;

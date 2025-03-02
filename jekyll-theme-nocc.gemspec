@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "jekyll-theme-nocc"
-  spec.version       = "2.0.2"
+  spec.version       = "2.0.3"
   spec.authors       = ["Carles Loriente"]
   spec.email         = ["7197733+carlesloriente@users.noreply.github.com"]
 
@@ -26,7 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "jekyll", "~> 4.4"
   spec.add_runtime_dependency "jekyll-feed", "~> 0.17"
   spec.add_runtime_dependency "jekyll-last-modified-at", "~> 1.3.2"
-  spec.add_runtime_dependency "jekyll-paginate", "~> 1.1"
   spec.add_runtime_dependency "jekyll-redirect-from", "~> 0.16"
   spec.add_runtime_dependency "jekyll-seo-tag", "~> 2.8"
   spec.add_runtime_dependency "jekyll-sitemap", "~> 1.4"

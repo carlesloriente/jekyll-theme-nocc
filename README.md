@@ -10,7 +10,7 @@ This README provides instructions for installing and configuring the NOCC Bootst
 
 It comes in three powerful options:
 
-- **💎 [Theme Jekyll Nocc](https://rubygems.org/gems/jekyll-theme-nocc)**: A Ruby gem that brings the power of NOCC directly to your Jekyll project.
+- **💎 [Jekyll Theme Nocc](https://rubygems.org/gems/jekyll-theme-nocc)**: A Ruby gem that brings the power of NOCC directly to your Jekyll project.
 - **🌟 [Nocc Bootstrap Theme](https://www.npmjs.com/package/nocc-bootstrap-theme)**: An NPM Package that brings the power of NOCC directly to your NodeJS project.
 - **🌐 [Full Site Bundle for Jekyll](https://github.com/carlesloriente/bootstrap-theme-jekyll)**: A complete static website showcasing NOCC's seamless integration. Featuring a beautifully designed homepage, dynamic tag cloud, image gallery, and more.
 
@@ -29,7 +29,9 @@ It comes in three powerful options:
   - [Setting up the theme](#setting-up-the-theme)
     - [1. Modify \_config.yml](#1-modify-_configyml)
     - [2. Modify index.markdown](#2-modify-indexmarkdown)
+    - [3. Modify about.markdown](#3-modify-aboutmarkdown)
   - [How to enable](#how-to-enable)
+    - [Posts Index section](#posts-index-section)
     - [Tags section](#tags-section)
     - [Contact form](#contact-form)
     - [Gallery section](#gallery-section)
@@ -44,7 +46,6 @@ It comes in three powerful options:
 2. **Fully Responsive and Dual Color (light and dark)**
 3. **CSS and JS files are minimized by default**
 4. **Self-hosted Google web fonts**
-5. **Demo site built-in**
 
 ## Installation
 
@@ -87,8 +88,16 @@ Edit your Jekyll site's _config.yml file.  It's recommended to add the following
 ```yaml
 plugins:
   - jekyll-feed
-  - jekyll-paginate
+  - jekyll-last-modified-at
   - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-sitemap
+```
+
+If `baseurl` param is empty, please add the following value:
+
+```yaml
+baseurl: "/"
 ```
 
 Next, add the following configuration options to your _config.yml file, replacing the placeholder values with your own:
@@ -154,7 +163,58 @@ carousel:
   - '/assets/images/bg-index-3.webp'
 ```
 
+### 3. Modify about.markdown
+
+Edit your `about.markdown` file and add the following front matter parameters after `permalink: /about/`:
+
+```markdown
+nav_order: 2
+description: About Page
+categories: about me
+background: '/assets/images/bg-about.webp'
+```
+
 ## How to enable
+
+### Posts Index section
+
+**1. Create a new folder `posts` in your site's root directory**.
+
+**2. Create a new file named index.html inside the recently created `posts` directory**.
+
+**3. Add the following content to the file**:
+
+```html
+---
+layout: posts_index
+title: Index of posts
+nav_order: 3
+background: '/assets/images/bg-post.webp'
+---
+
+{% for post in site.posts -%}
+      <article class="post-preview">
+        <a class="text-decoration-none" href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}" hreflang="{{ site.lang }}">
+          <h2 class="post-title text-decoration-none">{{ post.title }}</h2>
+        </a>
+        <p class="post-meta">Posted by
+          {% if post.author -%}
+          <a href="{{ 'about/' | relative_url }}" hreflang="{{ site.lang }}" aria-label="{{ post.author }} author">{{ post.author }}</a> 
+          {% else %}
+          <a href="{{ 'about/' | relative_url }}" hreflang="{{ site.lang }}" aria-label="{{ site.author }} author">{{ site.author }}</a> 
+          {%- endif %}
+          on {{ post.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=post.content %}
+          {%- if post.tags %}
+          <span class="tags">
+            {% for tag in post.tags %}
+              <a href="{{ site.tags_dir  | append: '/' | append: tag | append: '/' | relative_url }}" class="fs-6 link-info" hreflang="{{ site.lang }}" aria-label="{{ tag }}">#{{ tag }}</a> 
+            {% endfor %}
+            </span>
+          {%- endif -%}
+        </p>
+      </article>
+{% endfor -%}
+```
 
 ### Tags section
 
@@ -164,9 +224,10 @@ carousel:
 
 ```markdown
 ---
-title: Tags list
 layout: tags_index
+title: Tags list
 permalink: /tags/
+nav_order: 4
 description: A tag cloud from posts
 categories: tags
 background: '/assets/images/bg-gallery.webp'
@@ -200,6 +261,7 @@ This theme uses Formspree to handle contact form submissions.
 layout: page
 title: Contact
 permalink: /contact/
+nav_order: 5
 description: Contact me form
 categories: contact me
 background: '/assets/images/bg-contact.webp'
@@ -251,11 +313,11 @@ formemail               : "form@email.com"
 
 2. Add images: Place all the images you want to display in the gallery section into the newly created `gallery` directory.
 
-3. Create a new file named `gallery.html` in your site's root directory.
+3. Create a new file named `gallery.markdown` in your site's root directory.
 
-4. Add the following content to gallery.html:
+4. Add the following content to gallery.markdown:
 
-```html
+```markdown
 ---
 layout: images_gallery
 title: Gallery
@@ -269,7 +331,7 @@ This will automatically display all images found in the `assets/images/gallery` 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/carlesloriente/jekyll-theme-nocc. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](https://www.contributor-covenant.org/) code of conduct.
+Bug reports and pull requests are welcome on [GitHub](https://github.com/carlesloriente/jekyll-theme-nocc). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](https://www.contributor-covenant.org/) code of conduct.
 
 ## Creator
 
